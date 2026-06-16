@@ -1,0 +1,3 @@
+# SPA fallback so client-side routes (e.g. /videos/:slug) resolve on reload.
+# Used automatically by Netlify; see README for Vercel / GitHub Pages / Apache.
+/*    /index.html   200

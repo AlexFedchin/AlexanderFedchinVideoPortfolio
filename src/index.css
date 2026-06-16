@@ -1,0 +1,266 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   BASE — near-black canvas, bold sans typography, focus & motion policy
+   ========================================================================== */
+@layer base {
+  :root {
+    --frost: 150 210 235; /* rgb channels for the cyan glow tint */
+  }
+
+  * {
+    @apply border-white/10;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    @apply bg-ink-950 font-sans text-bone antialiased;
+    text-rendering: optimizeLegibility;
+    /* Faint, cool ambient light over near-black — a single restrained accent. */
+    background-image:
+      radial-gradient(58rem 58rem at 82% -12%, rgba(150, 210, 235, 0.07), transparent 60%),
+      radial-gradient(48rem 48rem at -12% 18%, rgba(150, 210, 235, 0.045), transparent 55%);
+    background-attachment: fixed;
+  }
+
+  /* Headings are bold, tightly-tracked sans — the core of the new look. */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold tracking-tightest;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background: rgba(255, 255, 255, 0.22);
+    color: #fff;
+  }
+
+  /* Cool-white focus ring. */
+  :focus-visible {
+    outline: 2px solid rgba(180, 222, 238, 0.85);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #2f2f36 transparent;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #26262b;
+    border-radius: 999px;
+    border: 2px solid #060607;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3a3a42;
+  }
+
+  img,
+  picture,
+  video {
+    @apply block max-w-full;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+    .reveal {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+}
+
+/* ==========================================================================
+   COMPONENTS — reusable surfaces & controls
+   ========================================================================== */
+@layer components {
+  /* Frosted glass surface with a hairline top-edge highlight. */
+  .glass {
+    @apply relative border border-white/10 bg-white/[0.04] backdrop-blur-2xl;
+    box-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.05) inset,
+      0 24px 70px -28px rgba(0, 0, 0, 0.8);
+  }
+  .glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.14),
+      rgba(255, 255, 255, 0) 35%
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .glass-strong {
+    @apply relative border border-white/10 bg-ink-900/70 backdrop-blur-3xl;
+    background-image: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.012) 40%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    box-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.06) inset,
+      0 40px 90px -34px rgba(0, 0, 0, 0.92);
+    -webkit-backdrop-filter: blur(44px) saturate(150%);
+    backdrop-filter: blur(44px) saturate(150%);
+  }
+
+  /* Plain hairline divider. */
+  .hairline {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.16),
+      transparent
+    );
+  }
+
+  /* Buttons -------------------------------------------------------------- */
+  .btn {
+    @apply relative inline-flex select-none items-center justify-center gap-2
+      whitespace-nowrap rounded-full text-sm font-medium
+      transition-all duration-400 ease-out-expo
+      focus-visible:outline-offset-4 disabled:pointer-events-none disabled:opacity-50;
+  }
+  .btn-lg {
+    @apply px-7 py-3.5 text-[0.95rem];
+  }
+  .btn-md {
+    @apply px-5 py-2.5;
+  }
+
+  /* Primary = white fill, the single highest-contrast action. */
+  .btn-primary {
+    @apply bg-bone font-semibold text-ink-950 hover:bg-white hover:shadow-glow-soft hover:-translate-y-0.5;
+  }
+
+  /* Ghost = glass pill that brightens on hover. */
+  .btn-ghost {
+    @apply border border-white/15 bg-white/[0.03] text-bone backdrop-blur-xl
+      hover:border-white/35 hover:bg-white/[0.07] hover:-translate-y-0.5;
+  }
+
+  /* Quiet text link. */
+  .btn-link {
+    @apply gap-1.5 font-medium text-bone/80 hover:text-bone;
+  }
+
+  /* Category / filter chip ---------------------------------------------- */
+  .chip {
+    @apply inline-flex items-center rounded-full border border-white/10
+      bg-white/[0.03] px-4 py-2 text-xs font-medium uppercase tracking-[0.16em]
+      text-bone-muted transition-all duration-300 ease-out-expo
+      hover:border-white/25 hover:text-bone;
+  }
+  .chip-active {
+    @apply border-white/40 bg-white/10 text-bone;
+  }
+
+  /* Small uppercase metadata label (year · genre, credit roles, etc.). */
+  .label {
+    @apply text-[0.65rem] font-medium uppercase tracking-cinematic text-bone-dim;
+  }
+
+  /* Long-form text (about bio, descriptions). */
+  .prose-cine {
+    @apply text-[1.05rem] leading-relaxed text-bone-muted;
+  }
+  .prose-cine p + p {
+    @apply mt-5;
+  }
+  .prose-cine strong {
+    @apply font-medium text-bone;
+  }
+}
+
+/* ==========================================================================
+   UTILITIES
+   ========================================================================== */
+@layer utilities {
+  /* Page horizontal rhythm. */
+  .shell {
+    @apply mx-auto w-full max-w-[88rem] px-5 sm:px-8 lg:px-12;
+  }
+  .shell-tight {
+    @apply mx-auto w-full max-w-5xl px-5 sm:px-8;
+  }
+
+  /* Scroll-reveal target (toggled by <ScrollReveal>). */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    /* Drop the promoted compositor layer once revealed — keeping will-change
+       around makes frosted-glass children flicker on hover repaints. */
+    will-change: auto;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+  }
+
+  /* Subtle film grain (pure CSS). Apply to a positioned element. */
+  .grain {
+    position: relative;
+  }
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .aspect-video-frame {
+    aspect-ratio: 16 / 9;
+  }
+}

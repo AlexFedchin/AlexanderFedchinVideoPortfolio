@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-import { getImageSource } from '@/utils/photoSource';
-import { Play } from '@/components/ui/icons';
+import { Link } from "react-router-dom";
+import { getImageSource } from "@/utils/photoSource";
+import { Play } from "@/components/ui/icons";
 
 /**
  * Music-video tile: a square cover that links to the detail page (player +
@@ -9,12 +9,15 @@ import { Play } from '@/components/ui/icons';
 export default function MusicVideoCard({ video }) {
   const { src } = getImageSource(video.cover, {
     title: video.title,
-    label: 'Music Video',
+    label: "Music Video",
     seed: video.slug,
   });
 
   return (
-    <Link to={`/videos/${video.slug}`} className="group block focus-visible:outline-offset-4">
+    <Link
+      to={`/videos/${video.slug}`}
+      className="group block focus-visible:outline-offset-4"
+    >
       <div className="relative aspect-square overflow-hidden rounded-xl border border-white/10 bg-ink-850">
         <img
           src={src}
@@ -26,7 +29,7 @@ export default function MusicVideoCard({ video }) {
         <span className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-transparent to-transparent" />
         <span className="absolute inset-0 grid place-items-center">
           <span className="grid h-14 w-14 place-items-center rounded-full border border-white/25 bg-ink-950/40 text-bone backdrop-blur-md transition-all duration-500 ease-out-expo group-hover:scale-110 group-hover:border-white/50">
-            <Play className="ml-0.5 h-5 w-5" />
+            <Play className="mr-0.5 h-5 w-5" />
           </span>
         </span>
       </div>
@@ -37,7 +40,9 @@ export default function MusicVideoCard({ video }) {
           {video.title}
         </h3>
         {video.credits?.starring && (
-          <p className="mt-0.5 text-sm text-bone-dim">{video.credits.starring}</p>
+          <p className="mt-0.5 text-sm text-bone-dim">
+            {video.credits.starring}
+          </p>
         )}
       </div>
     </Link>

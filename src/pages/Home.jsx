@@ -38,9 +38,9 @@ function Hero() {
         <div className="absolute inset-0 bg-ink-fade" />
       </div>
 
-      <Container className="py-32">
-        <div className="max-w-4xl">
-          <h1 className="font-display text-6xl font-bold leading-[0.9] tracking-tightest text-bone sm:text-8xl lg:text-[7.5rem]">
+      <Container className="py-40">
+        <div className="max-w-4xl flex flex-col items-center md:items-start gap-8">
+          <h1 className="font-display text-center md:text-start font-bold leading-[0.9] tracking-tightest text-bone text-4xl sm:text-5xl md:text-6xl lg:text-8xl">
             <span className="block animate-fade-up">{site.heroLines[0]}</span>
             <span
               className="block animate-fade-up text-bone-muted"
@@ -51,14 +51,14 @@ function Hero() {
           </h1>
 
           <p
-            className="mt-8 max-w-xl animate-fade-up text-lg leading-relaxed text-bone-muted"
+            className="max-w-xl animate-fade-up text-lg leading-relaxed text-bone-muted"
             style={{ animationDelay: "240ms" }}
           >
             {site.tagline}
           </p>
 
           <div
-            className="mt-9 flex animate-fade-up flex-wrap items-center gap-4"
+            className="mt-1 flex animate-fade-up flex-wrap items-center gap-4"
             style={{ animationDelay: "340ms" }}
           >
             <Button to="/photography" size="lg" withArrow>
@@ -75,7 +75,7 @@ function Hero() {
           </div>
 
           <div
-            className="mt-10 animate-fade-up"
+            className="mt-2 animate-fade-up"
             style={{ animationDelay: "440ms" }}
           >
             <SocialLinks />

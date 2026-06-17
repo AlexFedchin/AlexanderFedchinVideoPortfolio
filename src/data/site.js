@@ -17,12 +17,12 @@ export const site = {
   email: "alexanderfedchin@gmail.com",
 
   // ── Hero copy (editable placeholder) ───────────────────────────────────
-  heroLines: ["Visual stories", "in light & motion."],
-  tagline: "Photographer and filmmaker based in Helsinki, Finland.",
+  heroLines: ["Alexander Fedchin", "Portfolio"],
+  tagline: "Photographer and videographer based in Helsinki, Finland.",
 
   // Verbatim welcome from the existing site (migrated).
   intro:
-    "Hey, my name is Alex. I'm a photographer and videographer living in Helsinki, Finland. I make portraits, short films and music videos — and I'd love to hear about your project.",
+    "Hey, my name is Alex. I'm a photographer and videographer living in Helsinki, Finland. I make short films, music videos, commercials, promo videos — and I'd love to hear about your project.",
 
   // ── Primary navigation ─────────────────────────────────────────────────
   nav: [
@@ -66,51 +66,74 @@ export const site = {
     ],
     equipment: [
       {
-        group: "Cameras",
-        items: ["Sony A7 IV", "Sony A7S III", "DJI Pocket 3"],
-      },
-      {
-        group: "Lenses",
+        group: "Cameras & Gimbals",
         items: [
-          "Sony 24–70mm f/2.8 GM II",
-          "Sony 35mm f/1.4 GM",
-          "Sony 85mm f/1.4 GM",
-          "Sigma 16–28mm f/2.8",
+          "Blackmagic Pocket Cinema Camera",
+          "Canon EOS 600D",
+          "DJI RSC 2 Gimbal",
         ],
       },
       {
-        group: "Motion & Audio",
-        items: ["DJI RS 3 Pro gimbal", "DJI Air 3 drone", "RØDE Wireless Pro"],
+        group: "Audio",
+        items: ["RØDE Videomic Pro", "RØDE Lavalier", "DJI Wireless Mic"],
       },
       {
-        group: "Light & Grade",
-        items: ["Aputure 600x", "Amaran softboxes", "DaVinci Resolve Studio"],
+        group: "Editing Software",
+        items: [
+          "Adobe Premiere Pro",
+          "Adobe After Effects",
+          "DaVinci Resolve Studio",
+        ],
       },
     ],
     experience: [
       {
         year: "2025",
-        title: "Independent Photographer & Filmmaker",
+        title: "Promo Video for artisits",
         description:
-          "Commissioned portrait, short-film and music-video work for clients across Finland and beyond.",
+          "Made a promo video for a new track popular artists in Finland: Yonas Dilemma, Arttu Lindeman and Lavaredo. It was a fun project, we shot in different locations around Helsinki and had a great time creating something that matched the vibe of the music.",
       },
       {
-        year: "2023",
-        title: "Music Video Director",
+        year: "2024",
+        title: "Promo Video for businesses and artists",
         description:
-          "Directed and shot a run of music videos for emerging Nordic artists, end to end.",
+          "Started offering promo video services for businesses, like bars and cafes, and artists. It was something new for me, but I learned a lot of new things while doing this.",
       },
       {
-        year: "2021",
-        title: "Landscape & Travel Photography",
+        year: "2022",
+        title: "Short Film H.A.S.I. Release",
         description:
-          "Built a body of landscape work around the lakes and forests of the Helsinki region.",
+          "Released my third short film, which was a huge success. Recognition by multiple film festivals around the world, including awards for best director, best soundtrack, best sci-fi and best closing credits.",
+      },
+      {
+        year: "2020",
+        title: "Commercial Music Video Project",
+        description:
+          "Took on the first commercial project to shoot a music video for aspiring artists.",
       },
       {
         year: "2019",
-        title: "First steps behind the lens",
+        title: "First job as content creator",
         description:
-          "Picked up a camera, fell for the craft, and never really put it down.",
+          "Worked in a web store shooting products reviews. Continued journey as a filmmaker, releasing a second short film.",
+      },
+      {
+        year: "2018",
+        title: "First Real Short Film",
+        description:
+          "After months of planning, shooting with friends and editing, our first relatively good short film was born. It was a huge learning experience and the moment we knew we wanted to pursue this seriously.",
+      },
+      {
+        year: "2016",
+        title: "Interest in Filmmaking",
+        description:
+          "We became interested in more cinematic and professional content. First attempts to make a movie, first music video.",
+      },
+      {
+        year: "2015",
+        title: "Started YouTube Channel",
+        description:
+          "I started making fun YouTube videos with my brother. Challenges, sketches, everything that was popular at that time.",
       },
     ],
   },

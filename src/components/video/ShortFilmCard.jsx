@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-import { getImageSource } from '@/utils/photoSource';
-import { Play } from '@/components/ui/icons';
+import { Link } from "react-router-dom";
+import { getImageSource } from "@/utils/photoSource";
+import { Play } from "@/components/ui/icons";
 
 /**
  * Short-film tile: a portrait poster that links to the rich detail page.
@@ -9,13 +9,16 @@ import { Play } from '@/components/ui/icons';
 export default function ShortFilmCard({ video }) {
   const { src } = getImageSource(video.poster, {
     title: video.title,
-    label: 'Short Film',
+    label: "Short Film",
     seed: video.slug,
   });
   const awards = video.laurels?.length ?? 0;
 
   return (
-    <Link to={`/videos/${video.slug}`} className="group block focus-visible:outline-offset-4">
+    <Link
+      to={`/videos/${video.slug}`}
+      className="group block focus-visible:outline-offset-4"
+    >
       <div className="relative aspect-[2/3] overflow-hidden rounded-xl border border-white/10 bg-ink-850">
         <img
           src={src}
@@ -28,13 +31,13 @@ export default function ShortFilmCard({ video }) {
 
         <span className="absolute inset-0 grid place-items-center">
           <span className="grid h-14 w-14 place-items-center rounded-full border border-white/25 bg-ink-950/40 text-bone backdrop-blur-md transition-all duration-500 ease-out-expo group-hover:scale-110 group-hover:border-white/50">
-            <Play className="ml-0.5 h-5 w-5" />
+            <Play className="mr-0.5 h-5 w-5" />
           </span>
         </span>
 
         {awards > 0 && (
           <span className="absolute left-3 top-3 inline-flex items-center rounded-full border border-white/15 bg-ink-950/50 px-2.5 py-1 text-[0.6rem] uppercase tracking-cinematic text-bone backdrop-blur-md">
-            {awards} {awards === 1 ? 'Award' : 'Awards'}
+            {awards} {awards === 1 ? "Award" : "Awards"}
           </span>
         )}
       </div>

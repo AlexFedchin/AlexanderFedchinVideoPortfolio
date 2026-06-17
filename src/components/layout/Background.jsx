@@ -8,13 +8,16 @@ const NOISE =
  */
 export default function Background() {
   return (
-    <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+    <div
+      aria-hidden="true"
+      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+    >
       <div className="absolute -top-1/4 right-[-12%] h-[46rem] w-[46rem] rounded-full bg-radial-frost blur-3xl animate-glow-pulse" />
       <div className="absolute bottom-[-28%] left-[-14%] h-[42rem] w-[42rem] rounded-full bg-radial-frost opacity-60 blur-3xl" />
       <div className="absolute left-1/2 top-1/3 h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-radial-frost opacity-25 blur-3xl" />
       <div
         className="absolute inset-0 opacity-[0.03] mix-blend-overlay"
-        style={{ backgroundImage: `url("${NOISE}")` }}
+        // style={{ backgroundImage: `url("${NOISE}")` }}
       />
     </div>
   );

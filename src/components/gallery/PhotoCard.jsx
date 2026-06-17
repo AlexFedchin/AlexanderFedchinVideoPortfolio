@@ -15,7 +15,7 @@ export default function PhotoCard({ photo, index, onSelect }) {
     <button
       type="button"
       onClick={() => onSelect(index)}
-      aria-label={`View ${photo.title}`}
+      aria-label={`View photograph ${index + 1}`}
       className="group relative mb-4 block w-full break-inside-avoid overflow-hidden rounded-xl border border-white/5 bg-ink-900 text-left transition-colors duration-500 hover:border-white/15 focus-visible:outline-offset-4"
     >
       {!loaded && !isPlaceholder && <span className="absolute inset-0 animate-pulse bg-ink-800" />}
@@ -33,9 +33,6 @@ export default function PhotoCard({ photo, index, onSelect }) {
         )}
       />
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-1 bg-gradient-to-t from-ink-950/80 to-transparent p-4 pt-10 opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100">
-        <span className="text-sm font-semibold text-bone">{photo.title}</span>
-      </div>
     </button>
   );
 }

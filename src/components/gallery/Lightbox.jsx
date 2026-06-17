@@ -103,7 +103,7 @@ export default function Lightbox({ photos, index, onClose, onIndexChange }) {
       tabIndex={-1}
       role="dialog"
       aria-modal="true"
-      aria-label={`${photo.title}, image ${index + 1} of ${total}`}
+      aria-label={`Image ${index + 1} of ${total}`}
       className="fixed inset-0 z-[80] flex items-center justify-center outline-none"
     >
       {/* Backdrop (click to close) */}
@@ -133,17 +133,14 @@ export default function Lightbox({ photos, index, onClose, onIndexChange }) {
         <ChevronRight className="h-6 w-6" />
       </button>
 
-      {/* Image + caption */}
-      <figure {...swipe} className="relative z-[5] flex max-h-[88vh] max-w-[94vw] flex-col items-center">
+      {/* Image */}
+      <figure {...swipe} className="relative z-[5] flex max-h-[95vh] max-w-[90vw] items-center">
         <img
           key={photo.id}
           src={src}
           alt={photoAlt(photo)}
-          className="max-h-[76vh] max-w-[94vw] rounded-lg object-contain shadow-lift animate-scale-in"
+          className="max-h-[95vh] max-w-[90vw] rounded-lg object-contain shadow-lift animate-scale-in"
         />
-        <figcaption className="mt-5 text-center animate-fade-in">
-          <span className="font-display text-lg font-semibold text-bone">{photo.title}</span>
-        </figcaption>
       </figure>
 
       {/* Mobile prev / next */}

@@ -45,7 +45,7 @@ export default function Laurels({ laurels, className }) {
     <ul className={cn('flex flex-wrap items-center gap-x-7 gap-y-4', className)}>
       {laurels.map((laurel, i) => {
         const img = laurel.image ? resolveImage(laurel.image) : null;
-        const alt = `${laurel.title} — ${laurel.event} ${laurel.year || ''}`.trim();
+        const alt = [laurel.title, laurel.event, laurel.year].filter(Boolean).join(' — ') || laurel.image || 'Award laurel';
 
         if (img) {
           return (

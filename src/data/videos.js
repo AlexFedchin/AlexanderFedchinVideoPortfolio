@@ -59,12 +59,8 @@ export const videos = [
       editedBy: "Alexander Fedchin",
     },
     laurels: [
-      {
-        title: "Official Selection",
-        event: "Tampere Film Festival",
-        year: "2024",
-      },
-      { title: "Best Cinematography", event: "Nordic Shorts", year: "2024" },
+      { image: "laurel-tampere-2024-official-selection.png" },
+      { image: "laurel-nordic-shorts-2024-best-cinematography.png" },
     ],
     featured: true,
   },
@@ -85,7 +81,7 @@ export const videos = [
       editedBy: "Alexander Fedchin",
     },
     laurels: [
-      { title: "Official Selection", event: "Helsinki Shorts", year: "2023" },
+      { image: "laurel-helsinki-shorts-2023-official-selection.png" },
     ],
     featured: true,
   },

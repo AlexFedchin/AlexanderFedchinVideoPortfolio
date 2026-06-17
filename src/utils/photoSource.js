@@ -15,7 +15,7 @@ export function getPhotoSource(photo) {
   if (real) return { src: real, isPlaceholder: false };
 
   const placeholder = generatePlaceholder({
-    title: photo.title,
+    title: '',
     category: 'Photograph',
     seed: String(photo.id),
   });
@@ -23,7 +23,7 @@ export function getPhotoSource(photo) {
 }
 
 /** Accessible alt text for a photo. */
-export const photoAlt = (photo) => `${photo.title} — photograph by Alexander Fedchin`;
+export const photoAlt = (photo) => `Photograph ${photo.id} by Alexander Fedchin`;
 
 /**
  * Generic resolver for any single asset (poster, cover, laurel, portrait):

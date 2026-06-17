@@ -10,7 +10,10 @@
  * build time, so every referenced asset is fingerprinted and optimised.
  */
 const modules = import.meta.glob(
-  '../assets/photos/*.{jpg,jpeg,png,webp,avif,gif,svg,JPG,JPEG,PNG,WEBP,AVIF}',
+  [
+    '../assets/photos/*.{jpg,jpeg,png,webp,avif,gif,svg,JPG,JPEG,PNG,WEBP,AVIF}',
+    '../assets/laurels/*.{jpg,jpeg,png,webp,avif,gif,svg,JPG,JPEG,PNG,WEBP,AVIF}',
+  ],
   { eager: true, import: 'default' }
 );
 

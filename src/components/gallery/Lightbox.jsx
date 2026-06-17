@@ -1,12 +1,12 @@
-import { useCallback, useEffect, useRef } from 'react';
-import { createPortal } from 'react-dom';
-import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
-import { useSwipe } from '@/hooks/useSwipe';
-import { getPhotoSource, photoAlt } from '@/utils/photoSource';
-import { Close, ChevronLeft, ChevronRight } from '@/components/ui/icons';
+import { useCallback, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
+import { useBodyScrollLock } from "@/hooks/useBodyScrollLock";
+import { useSwipe } from "@/hooks/useSwipe";
+import { getPhotoSource, photoAlt } from "@/utils/photoSource";
+import { Close, ChevronLeft, ChevronRight } from "@/components/ui/icons";
 
 const sideBtn =
-  'grid h-12 w-12 place-items-center rounded-full border border-white/15 bg-white/[0.04] text-bone backdrop-blur-xl transition-all duration-300 ease-out-expo hover:border-white/35 hover:bg-white/10';
+  "grid h-12 w-12 place-items-center rounded-full border border-white/15 bg-white/[0.04] text-bone backdrop-blur-xl transition-all duration-300 ease-out-expo hover:border-white/35 hover:bg-white/10";
 
 /**
  * Fullscreen image viewer, rendered into <body> via a portal.
@@ -32,7 +32,7 @@ export default function Lightbox({ photos, index, onClose, onIndexChange }) {
       const n = photos.length;
       onIndexChange((index + dir + n) % n);
     },
-    [open, index, photos.length, onIndexChange]
+    [open, index, photos.length, onIndexChange],
   );
 
   const prev = useCallback(() => go(-1), [go]);
@@ -44,11 +44,11 @@ export default function Lightbox({ photos, index, onClose, onIndexChange }) {
   useEffect(() => {
     if (!open) return undefined;
     const onKey = (e) => {
-      if (e.key === 'Escape') return onClose();
-      if (e.key === 'ArrowLeft') return prev();
-      if (e.key === 'ArrowRight') return next();
-      if (e.key === 'Tab') {
-        const focusables = dialogRef.current?.querySelectorAll('button');
+      if (e.key === "Escape") return onClose();
+      if (e.key === "ArrowLeft") return prev();
+      if (e.key === "ArrowRight") return next();
+      if (e.key === "Tab") {
+        const focusables = dialogRef.current?.querySelectorAll("button");
         if (!focusables?.length) return undefined;
         const first = focusables[0];
         const last = focusables[focusables.length - 1];
@@ -62,8 +62,8 @@ export default function Lightbox({ photos, index, onClose, onIndexChange }) {
       }
       return undefined;
     };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, [open, onClose, prev, next]);
 
   // Move focus in on open; restore it to the trigger on close.
@@ -111,48 +111,79 @@ export default function Lightbox({ photos, index, onClose, onIndexChange }) {
         type="button"
         aria-label="Close image viewer"
         onClick={onClose}
-        className="absolute inset-0 cursor-zoom-out bg-ink-950/90 backdrop-blur-2xl animate-fade-in"
+        className="absolute inset-0 bg-ink-950/50 backdrop-blur-2xl animate-fade-in"
       />
 
       {/* Top bar: counter + close */}
       <div className="absolute inset-x-0 top-0 z-10 flex items-center justify-between px-5 py-5 sm:px-8">
         <span className="font-display text-sm tabular-nums tracking-wide text-bone-muted">
-          {String(index + 1).padStart(2, '0')}
-          <span className="text-bone-dim"> / {String(total).padStart(2, '0')}</span>
+          {String(index + 1).padStart(2, "0")}
+          <span className="text-bone-dim">
+            {" "}
+            / {String(total).padStart(2, "0")}
+          </span>
         </span>
-        <button type="button" onClick={onClose} aria-label="Close" className={sideBtn.replace('h-12 w-12', 'h-11 w-11')}>
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close"
+          className={sideBtn.replace("h-12 w-12", "h-11 w-11")}
+        >
           <Close className="h-5 w-5" />
         </button>
       </div>
 
       {/* Desktop prev / next */}
-      <button type="button" onClick={prev} aria-label="Previous image" className={`absolute left-3 z-10 hidden sm:left-6 sm:grid ${sideBtn}`}>
+      <button
+        type="button"
+        onClick={prev}
+        aria-label="Previous image"
+        className={`absolute left-3 z-10 hidden sm:left-6 sm:grid ${sideBtn}`}
+      >
         <ChevronLeft className="h-6 w-6" />
       </button>
-      <button type="button" onClick={next} aria-label="Next image" className={`absolute right-3 z-10 hidden sm:right-6 sm:grid ${sideBtn}`}>
+      <button
+        type="button"
+        onClick={next}
+        aria-label="Next image"
+        className={`absolute right-3 z-10 hidden sm:right-6 sm:grid ${sideBtn}`}
+      >
         <ChevronRight className="h-6 w-6" />
       </button>
 
       {/* Image */}
-      <figure {...swipe} className="relative z-[5] flex max-h-[95vh] max-w-[90vw] items-center">
+      <figure
+        {...swipe}
+        className="relative z-[5] flex h-full w-full items-center justify-center"
+      >
         <img
           key={photo.id}
           src={src}
           alt={photoAlt(photo)}
-          className="max-h-[95vh] max-w-[90vw] rounded-lg object-contain shadow-lift animate-scale-in"
+          className="max-h-full grow max-w-full rounded object-contain shadow-lift animate-scale-in"
         />
       </figure>
 
       {/* Mobile prev / next */}
       <div className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 items-center gap-3 sm:hidden">
-        <button type="button" onClick={prev} aria-label="Previous image" className={sideBtn}>
+        <button
+          type="button"
+          onClick={prev}
+          aria-label="Previous image"
+          className={sideBtn}
+        >
           <ChevronLeft className="h-6 w-6" />
         </button>
-        <button type="button" onClick={next} aria-label="Next image" className={sideBtn}>
+        <button
+          type="button"
+          onClick={next}
+          aria-label="Next image"
+          className={sideBtn}
+        >
           <ChevronRight className="h-6 w-6" />
         </button>
       </div>
     </div>,
-    document.body
+    document.body,
   );
 }

@@ -13,8 +13,8 @@
  * ── Short Films ──────────────────────────────────────────────────────────
  *   + genre, description, poster (image filename)
  *   + credits: { shotBy, starring, editedBy }
- *   + laurels: [{ title, event, year, image? }]   // festival/award laurels
  *   → rich detail page at /videos/:slug
+ *   Laurels are auto-discovered from src/assets/laurels/{slug}/
  *
  * ── Music Videos ─────────────────────────────────────────────────────────
  *   + cover (image filename)
@@ -44,11 +44,11 @@ export const videos = [
   // ── Short Films ──────────────────────────────────────────────────────────
   {
     id: 1,
-    slug: "northern-lights",
+    slug: "hasi",
     category: "Short Films",
     title: "H.A.S.I.",
     year: 2022,
-    genre: "Sc-Fi",
+    genre: "Sci-Fi",
     youtubeId: "mFN_6nZpqt8",
     poster: "hasi.jpg",
     description:
@@ -58,10 +58,6 @@ export const videos = [
       starring: "Polina Sigitova, Arseniy Ershov, Alexander Fedchin",
       editedBy: "Alexander Fedchin",
     },
-    laurels: [
-      { image: "laurel-tampere-2024-official-selection.png" },
-      { image: "laurel-nordic-shorts-2024-best-cinematography.png" },
-    ],
     featured: true,
   },
   {
@@ -80,9 +76,6 @@ export const videos = [
       starring: "Elias Korhonen",
       editedBy: "Alexander Fedchin",
     },
-    laurels: [
-      { image: "laurel-helsinki-shorts-2023-official-selection.png" },
-    ],
     featured: true,
   },
   {
@@ -102,7 +95,6 @@ export const videos = [
         "Uliana Abrosimenkova, Mariia Antonova, Sergey Fedchin, Alexander Fedchin",
       editedBy: "Alexander Fedchin",
     },
-    laurels: [],
     featured: false,
   },
 

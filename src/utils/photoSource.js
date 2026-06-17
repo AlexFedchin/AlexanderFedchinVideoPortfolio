@@ -11,6 +11,7 @@ import { generatePlaceholder } from './placeholder';
  * @returns {{ src: string, isPlaceholder: boolean, ratio?: number }}
  */
 export function getPhotoSource(photo) {
+  if (photo.src) return { src: photo.src, isPlaceholder: false };
   const real = resolveImage(photo.image);
   if (real) return { src: real, isPlaceholder: false };
 
@@ -23,7 +24,7 @@ export function getPhotoSource(photo) {
 }
 
 /** Accessible alt text for a photo. */
-export const photoAlt = (photo) => `Photograph ${photo.id} by Alexander Fedchin`;
+export const photoAlt = (photo) => photo.alt ?? `Photograph ${photo.id} by Alexander Fedchin`;
 
 /**
  * Generic resolver for any single asset (poster, cover, laurel, portrait):

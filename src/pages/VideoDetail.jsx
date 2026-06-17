@@ -6,6 +6,7 @@ import {
 } from "@/data/videos";
 import { ytWatch } from "@/utils/youtube";
 import { getImageSource } from "@/utils/photoSource";
+import { getLaurelsBySlug } from "@/utils/images";
 import { cn } from "@/utils/cn";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
@@ -107,6 +108,7 @@ export default function VideoDetail() {
 
   const related = getRelatedVideos(slug);
   const { prev, next } = getVideoNeighbors(slug);
+  const laurels = getLaurelsBySlug(slug);
   const isFilm = video.category === "Short Films";
   const imageFile = video.poster || video.cover;
   const aside = imageFile
@@ -144,12 +146,6 @@ export default function VideoDetail() {
           <VideoPlayer youtubeId={video.youtubeId} title={video.title} />
         </ScrollReveal>
 
-        {isFilm && video.laurels?.length > 0 && (
-          <ScrollReveal className="mt-8 flex justify-center sm:justify-start">
-            <Laurels laurels={video.laurels} />
-          </ScrollReveal>
-        )}
-
         <div className="mt-12 grid gap-10 lg:grid-cols-3">
           <ScrollReveal delay={100} className="flex flex-col gap-5">
             {aside && (
@@ -178,9 +174,23 @@ export default function VideoDetail() {
 
           <ScrollReveal className="flex flex-col gap-10 lg:col-span-2">
             {video.description && (
-              <p className="prose-cine text-lg">{video.description}</p>
+              <div className="flex flex-col gap-3">
+                <h2 className="text-sm font-semibold uppercase tracking-[0.16em] text-bone-muted">
+                  Description
+                </h2>
+                <p className="prose-cine text-lg">{video.description}</p>
+              </div>
             )}
             {video.credits && <Credits credits={video.credits} />}
+
+            {laurels.length > 0 && (
+              <div className="flex flex-col gap-3">
+                <h2 className="text-sm font-semibold uppercase tracking-[0.16em] text-bone-muted">
+                  Awards
+                </h2>
+                <Laurels laurels={laurels} />
+              </div>
+            )}
           </ScrollReveal>
         </div>
 
